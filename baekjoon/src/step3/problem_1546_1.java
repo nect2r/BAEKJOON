@@ -11,13 +11,12 @@ package step3;
 
 import java.util.Scanner;
 
-public class problem_1546 {
+public class problem_1546_1 {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		
 		//첫번쨰 input은 과목의 갯수 N개
 		int N = in.nextInt();
-		
 		
 		//두번쨰 input은 과목 성적 N개 만큼
 		double[] M = new double[N];
