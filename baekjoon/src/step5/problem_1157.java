@@ -15,7 +15,7 @@ public class problem_1157 {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
  
-		int[] arr = new int[26]; // 영문자의 개수는 26개임
+		int[] arr = new int[26]; // 영문자의 개수는 26개임 오늘은 봐주..ㅠ
 		String s = in.next();
  
 		for (int i = 0; i < s.length(); i++){
