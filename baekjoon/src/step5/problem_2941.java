@@ -1,5 +1,5 @@
 /*
- * @since 2021-11-08
+ * @since 2021-11-23
  * User https://www.acmicpc.net/user/nect2r
  * Blog https://nect2r.tistory.com/
  * Github https://github.com/nect2r/BAEKJOON
@@ -14,27 +14,53 @@ import java.util.*;
 public class problem_2941 {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
-		String T = in.nextLine();
+		String str = in.nextLine();
 		
-		String[] str = {"c=","c-","dz=","d-","lj","nj","s=","z="};
+		int len = str.length();
+		int count = 0;
 		
-		int total = 0;
-		int lastIndex = 0;
-
-		for(int i=0; i<str.length; i++) {
-			if(lastIndex != -1) {
-				lastIndex = T.indexOf(str[i])+2;
-				i -= 1;
-				total += 1;
-			}else {
-				lastIndex = T.indexOf(str[i])+2;
-			}
+		for(int i=0; i<str.length(); i++) {
 			
-			System.out.println(lastIndex);
+			char ch = str.charAt(i);
+			 
+			if(ch == 'c' && i < len - 1) {			
+				if(str.charAt(i + 1) == '=' || str.charAt(i + 1) == '-') {		
+					i++;		
+				}
+				
+			}
+		    
+			else if(ch == 'd' && i < len - 1) {
+				if(str.charAt(i + 1) == '-') {
+						i++;
+					}
+				else if(str.charAt(i + 1) == 'z' && i < len - 2) {
+					
+					if(str.charAt(i + 2) == '=') {
+						i += 2;
+					}
+				}
+			}
+		    
+			else if((ch == 'l' || ch == 'n') && i < len - 1) {
+				if(str.charAt(i + 1) == 'j') {	
+					i++;
+				}
+			}
+		    
+ 
+			else if((ch == 's' || ch == 'z') && i < len - 1) {
+				if(str.charAt(i + 1) == '=') {
+					i++;
+				}
+			
+		    }
+		    
+			count++;
+			
 		}
-
-		System.out.println("크로아티아 알파벳 갯수 : " + total);
-		System.out.println("단어의 길이 : " + T.length());
+		
+		System.out.println(count);
 		
 		in.close();
 	}
