@@ -33,17 +33,17 @@ public class problem_1316 {
 		String str = in.next();
 		
 		for(int i = 0; i < str.length(); i++) {
-			int now = str.charAt(i);	// i 번째 문자 저장 (현재 문자)
+			int now = str.charAt(i);
 			
 			if (prev != now) {		
 				
 				if ( check[now - 'a'] == false ) {
-					check[now - 'a'] = true;		// true 로 바꿔준다
-					prev = now;					// 다음 턴을 위해 prev 도 바꿔준다 
+					check[now - 'a'] = true;
+					prev = now;				
 				}
 	 
 				else {
-					return false;	//함수 종료
+					return false;	
 				}
 			}
 	        
