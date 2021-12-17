@@ -30,7 +30,7 @@ public class problem_1193 {
 		
 		//1/1부터 T는 2이기때문 T를 2로 초기화
 		int T = 2;
-		//범위
+		//범위~
 		int Tsum = 0;
 		
 		while(true) {
