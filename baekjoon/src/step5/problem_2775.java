@@ -12,7 +12,7 @@ package step5;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class problem_1152 {
+public class problem_2775 {
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
