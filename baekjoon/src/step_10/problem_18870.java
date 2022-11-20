@@ -17,17 +17,22 @@ public class problem_18870 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int size = Integer.parseInt(br.readLine());
 		int[] arr = new int[size];
+		int pMin = Integer.MAX_VALUE;
 
-		int Max = Integer.MIN_VALUE;
-		int Max2 = Integer.MAX_VALUE;
+		StringTokenizer st = new StringTokenizer(br.readLine());
 
-		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		for(int i=0; i<size; i++) {
-			int value = Integer.parseInt(st.nextToken());
-			if(value > 0) {
-				
+			arr[i] = Integer.parseInt(st.nextToken());
+
+			if(arr[i] < pMin && arr[i] >= 0) {
+				pMin = arr[i];
 			}
-			arr[i] = 
 		}
+
+		StringBuilder sb = new StringBuilder();
+		for(int i=0; i<size; i++) {
+			sb.append(arr[i] + " ");
+		}
+		System.out.println(sb.toString());
 	}
 }
