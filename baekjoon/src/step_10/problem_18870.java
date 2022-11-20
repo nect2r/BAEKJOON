@@ -17,22 +17,32 @@ public class problem_18870 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int size = Integer.parseInt(br.readLine());
 		int[] arr = new int[size];
-		int pMin = Integer.MAX_VALUE;
+		int[] result = new int[size];
 
 		StringTokenizer st = new StringTokenizer(br.readLine());
-
 		for(int i=0; i<size; i++) {
-			arr[i] = Integer.parseInt(st.nextToken());
+			int a = Integer.parseInt(st.nextToken());
+			arr[i] = a;
+			result[i] = a;
+		}
 
-			if(arr[i] < pMin && arr[i] >= 0) {
-				pMin = arr[i];
+		Arrays.sort(arr);
+
+		Map<Integer,Integer> map = new HashMap<>();
+
+		int count = 0;
+		for(int i=0; i<size; i++) {
+			if(!map.containsKey(arr[i])) {
+				map.put(arr[i], count);
+				count++;
 			}
 		}
-
+		
 		StringBuilder sb = new StringBuilder();
 		for(int i=0; i<size; i++) {
-			sb.append(arr[i] + " ");
+			sb.append(map.get(result[i]) + " ");
 		}
-		System.out.println(sb.toString());
+
+		System.out.println(sb);
 	}
 }
