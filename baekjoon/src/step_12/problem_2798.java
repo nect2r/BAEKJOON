@@ -7,7 +7,7 @@
  * Delete the package
  * Run
  */
-package step12;
+package step_12;
 
 import java.io.*;
 import java.util.*;
