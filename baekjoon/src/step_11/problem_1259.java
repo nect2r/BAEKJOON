@@ -21,14 +21,13 @@ public class problem_1259 {
         while(true) {
             String value = br.readLine();
 
-            if(isF(value)) {
-                //sb.append("yes\n");
-            }else{
-                //sb.append("no\n");
-            }
-
-            if(value.equals("0")) {
+            if(value.equals("0")) 
                 break;
+
+            if(isF(value)) {
+                sb.append("yes\n");
+            }else{
+                sb.append("no\n");
             }
         }
 
@@ -44,10 +43,6 @@ public class problem_1259 {
         int end = value.length() - 1;
 
         while(true) {
-            char a = value.charAt(start);
-            char b = value.charAt(end);
-
-            System.out.println("a : " + a + " || b :" + b);
             if(start == end && end - start == 1) {
                 break;
             }else{
