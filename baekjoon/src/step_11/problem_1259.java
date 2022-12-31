@@ -1,5 +1,5 @@
 /*
- * @since 2022-11-21
+ * @since 2022-12-29
  * User https://www.acmicpc.net/user/nect2r
  * Blog https://nect2r.tistory.com/
  * Github https://github.com/nect2r/BAEKJOON
@@ -23,7 +23,6 @@ public class problem_1259 {
 
             if(value.equals("0")) 
                 break;
-
             if(isF(value)) {
                 sb.append("yes\n");
             }else{
@@ -35,7 +34,9 @@ public class problem_1259 {
     }
 
     public static boolean isF(String value) {
-        if(value.length() == 1) {
+        int len = value.length();
+
+        if(len == 1) {
             return true;
         }
 
@@ -43,14 +44,34 @@ public class problem_1259 {
         int end = value.length() - 1;
 
         while(true) {
-            if(start == end && end - start == 1) {
-                break;
-            }else{
-                start++;
-                end--;
+
+            //짝수
+            if(len % 2 == 0) {
+                if(value.charAt(start) != value.charAt(end)) {
+                    return false;
+                }
+
+                if(end - start == 1) {
+                    break;
+                } else {
+                    start++;
+                    end--;
+                }
+            //홀수
+            } else {
+                if(value.charAt(start) != value.charAt(end)) {
+                    return false;
+                }
+
+                if(end == start) {
+                    break;
+                } else {
+                    start++;
+                    end--;
+                }
             }
         }
 
-        return false;
+        return true;
     }
 }
