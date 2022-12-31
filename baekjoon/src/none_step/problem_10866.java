@@ -80,7 +80,7 @@ public class problem_10866 {
 
     public static int empty() {
         if(deque.size() == 0) {
-            return -1;
+            return 1;
         }
 
         return 0;
