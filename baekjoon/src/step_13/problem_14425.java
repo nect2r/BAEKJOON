@@ -28,6 +28,12 @@ public class problem_14425 {
             map.put(br.readLine(), false);
         }
 
+        for(int i=0; i<M; i++) {
+            if(map.containsKey(br.readLine())) {
+                answer++;
+            }
+        }
+
         System.out.println(answer);
     }
 }
