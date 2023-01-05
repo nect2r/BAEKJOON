@@ -25,6 +25,8 @@ public class problem_2477 {
         int hc = 0;
         int verMax = 0;
         int horMax = 0;
+        int verMaxPoint = 0;
+        int horMaxPoint = 0;
 
         //방향이 같은 2개가 나올떄 세로는 2번째, 가로는 1번째를 곱하면 제외할 영역을 알수있음
         //전체에서 빼고 구하면 되겠다.. 야호
@@ -37,20 +39,27 @@ public class problem_2477 {
             //세로
             if(direction == 3 || direction == 4) {
                 ver[vc] = length;
-                vc++;
 
                 if(verMax < length) {
                     verMax = length;
+                    verMaxPoint = vc;
                 }
+
+                vc++;
             //가로
             } else {
                 hor[hc] = length;
-                hc++;
-
+                
                 if(horMax < length) {
                     horMax = length;
+                    horMaxPoint = hc;
                 }
+
+                hc++;
             }
         }
+
+        System.out.println(verMaxPoint);
+        System.out.println(horMaxPoint);
     }
 }
