@@ -37,6 +37,8 @@ public class problem_2981 {
                 }
             } 
         }
+
+        makeM(items,minPoint,maxPoint);
     }
 
     public static void makeM(int[] items, int minPoint, int maxPoint) {
@@ -48,8 +50,6 @@ public class problem_2981 {
 
             for(int j = 0; j < items.length; j++) {    
                 int temp = items[j] % i;
-
-                //System.out.println("item : " + items[j] + " i : " + i + " r : " + temp);
 
                 if(m != temp) {
                     b = false;
