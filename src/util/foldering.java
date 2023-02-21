@@ -1,6 +1,3 @@
-package util;
-
-
 /*
  * 백준 단계별로 풀어보기에 맞춰 패키지별로 파일을 구분하고있는데 너무 귀찮아서 제작
  * 
@@ -11,6 +8,8 @@ package util;
  * 종속성
  * jsoup.*.jar https://jsoup.org/download
  */
+package util;
+
 public class foldering {
     public static void main(String[] args) {
         
@@ -20,6 +19,6 @@ public class foldering {
      * https://www.acmicpc.net/step 경로의 단계와 경로를 구해온다.
      */
     public static void getStepList() {
-
+        String URL = "https://www.acmicpc.net/step";
     }
 }
