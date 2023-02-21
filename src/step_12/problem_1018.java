@@ -68,7 +68,7 @@ public class problem_1018 {
 
         for(int hor = 0; hor <= M - 8; hor++) {
             for(int ver = 0; ver <= N - 8; ver++) {
-                char beforeWord = 'N';
+                //char beforeWord = 'N';
                 int Bcount = 0;
                 int Wcount = 0;
 

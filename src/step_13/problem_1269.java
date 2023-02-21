@@ -35,7 +35,7 @@ public class problem_1269 {
             Bset.add(Integer.parseInt(st.nextToken()));
         }
 
-        Iterator iter = Aset.iterator();
+        Iterator<?> iter = Aset.iterator();
         // B - A
         while(iter.hasNext()) {
             int data = Integer.parseInt(String.valueOf(iter.next()));

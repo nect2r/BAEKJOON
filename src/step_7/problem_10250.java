@@ -20,7 +20,7 @@ public class problem_10250 {
 		for(int i = 0; i < T; i++) {
 
 			int H = in.nextInt();
-			int W = in.nextInt();
+			in.nextInt();
 			int N = in.nextInt();
 
 			//N과 H의 나머지가 0이면

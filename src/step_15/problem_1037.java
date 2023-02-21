@@ -17,7 +17,7 @@ public class problem_1037 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int n = Integer.parseInt(st.nextToken());
+        Integer.parseInt(st.nextToken());
         int max = Integer.MIN_VALUE;
         int min = Integer.MAX_VALUE;
 

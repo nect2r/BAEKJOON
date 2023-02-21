@@ -10,13 +10,11 @@
 package step_10;
 
 import java.io.*;
-import java.util.*;
 
 public class problem_2231 {
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine());
-		int answer = 0;
 
 		for(int i=N; i>0; i++) {
 			

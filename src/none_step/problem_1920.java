@@ -17,7 +17,7 @@ public class problem_1920 {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int nCount = Integer.parseInt(br.readLine());
-        Map<Integer,Integer> hash = new HashMap();
+        Map<Integer,Integer> hash = new HashMap<Integer,Integer>();
 
         StringTokenizer st = new StringTokenizer(br.readLine());
 

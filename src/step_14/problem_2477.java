@@ -17,7 +17,8 @@ public class problem_2477 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = null;
 
-        int count = Integer.parseInt(br.readLine());
+        //int count = Integer.parseInt(br.readLine());
+        Integer.parseInt(br.readLine());
         
         int[] ver = new int[3];
         int[] hor = new int[3];

@@ -18,5 +18,6 @@ public class problem_1010 {
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         int count = Integer.parseInt(st.nextToken());
+        System.out.println(count);
     }
 }

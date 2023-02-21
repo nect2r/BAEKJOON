@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
 public class problem_10807 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-		String size = bf.readLine();
+		bf.readLine();
 		String[] strs = bf.readLine().split(" ");
 		String search = bf.readLine();
 		int chk = 0;

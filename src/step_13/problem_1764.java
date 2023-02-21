@@ -22,7 +22,7 @@ public class problem_1764 {
         int M = Integer.parseInt(st.nextToken());
         int answer = 0;
         
-        Map<String,String> map = new HashMap();
+        Map<String,String> map = new HashMap<String,String>();
         List<String> list = new ArrayList<String>();
 
         for(int i = 0; i < N; i++) {
