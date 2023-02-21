@@ -7,7 +7,7 @@
  * Delete the package
  * Run
  */
-package step_1;
+package none_step;
 
 public class problem_25083 {
     public static void main(String[] args){

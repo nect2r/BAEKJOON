@@ -7,7 +7,7 @@
  * Delete the package
  * Run
  */
-package none_step;
+package step_1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
