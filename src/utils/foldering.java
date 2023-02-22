@@ -29,47 +29,40 @@ public class foldering {
     public static void main(String[] args) {
         List<String> hrefList = getStepList(STEP_URL, STEP_TABLE_SELECTOR, STEP_TD_SELECTOR);
 
-        none(hrefList, PROBLEM_URL, PROBLEM_TABLE_SELECTOR, PROBLEM_TD_SELECTOR);
+        none(hrefList, PROBLEM_URL, PROBLEM_TABLE_SELECTOR);
     }
 
     //문제확인 기본경로
     static final String PROBLEM_URL = "https://www.acmicpc.net";
 
     //문제확인 css selector
-    static final String PROBLEM_TABLE_SELECTOR = "#problemset tbody tr";
+    static final String PROBLEM_TABLE_SELECTOR = "#problemset tbody tr td.list_problem_id";
 
-    //문제확인 href css selector
-    static final String PROBLEM_TD_SELECTOR = "td:nth-child(2) a";
-
-    public static void none(List<String> hrefList, String problemUrl, String problemTableSelector, String problemTdSelector) {
+    public static void none(List<String> hrefList, String problemUrl, String problemTableSelector) {
         List<String> problemList = new ArrayList<>();
 
         File file = new File("temp");
         String projectPath = file.getAbsoluteFile().toString();
         String srcPath = projectPath.substring(0, projectPath.indexOf(File.separator + "temp")) + File.separator + "src";
 
-        Path stepPath = Paths.get(srcPath + File.separator + "step_" + (i + 1));
-
-        //step_* 디렉토리 존재여부
-        //존재하면 안에 problem_*.java 조회하여 step과 일치하는곳으로 이동
-        if (Files.isDirectory(stepPath)) {
+        try {
             Path problemPath = Paths.get(srcPath);
-
+    
             List<Path> result;
             Stream<Path> walk = Files.walk(problemPath);
             result = walk.filter(Files::isRegularFile).collect(Collectors.toList());
-
+    
             for(Path path : result) {
-                System.out.println(path);
+                problemList.add(path.toString());
             }
-
-            break;
-        } else if (Files.isRegularFile(stepPath)) {
-            System.out.println("파일이 존재합니다");
+        } catch(Exception e) {
+            e.printStackTrace();
         }
 
         for(int i = 0; i < hrefList.size(); i++) {
             String href = hrefList.get(i);
+            Path stepPath = Paths.get(srcPath + File.separator + "step_" + (i + 1));
+            File stepFolder = new File(stepPath.toString());
 
             try {
                 Document doc = Jsoup.connect(problemUrl + href).get();
@@ -77,12 +70,25 @@ public class foldering {
                 Elements tr = doc.select(problemTableSelector);
 
                 for(Element element : tr) {
-                    String problemHref = element.select(problemTdSelector).attr("href");
-                    problemList.add(problemHref);
-                }
+                    String problem = element.text();
 
+                    for(String javaPath : problemList) {
+                        if(javaPath.contains("problem_" + problem)) {
+                            if(!javaPath.contains("step_" + (i + 1) + File.separator + "problem_" + problem)) {
+                                if(!stepFolder.isDirectory()) {
+                                    stepFolder.mkdir();
+                                }
+                                    
+                                Path oldfile = Paths.get(javaPath);
+                                Path newfile = Paths.get(stepPath.toString() + File.separator + "problem_" + problem + ".java");
+                                Files.move(oldfile, newfile);
+                            }
+                        }
+                    }
+                }
             } catch(Exception e) {
                 e.printStackTrace();
+                break;
             }
         }
     }
