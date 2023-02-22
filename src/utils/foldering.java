@@ -11,6 +11,7 @@
 package utils;
 
 import java.io.File;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -81,6 +82,17 @@ public class foldering {
                                     
                                 Path oldfile = Paths.get(javaPath);
                                 Path newfile = Paths.get(stepPath.toString() + File.separator + "problem_" + problem + ".java");
+                                File newF = new File(newfile.toString());
+
+                                int count = 1;
+
+                                //move 전 중복확인
+                                while(newF.exists()) {
+                                    newfile = Paths.get(stepPath.toString() + File.separator + "problem_" + problem + "_" + count + ".java");
+                                    newF = new File(newfile.toString());
+                                    count++;
+                                }
+                                
                                 Files.move(oldfile, newfile);
                             }
                         }
