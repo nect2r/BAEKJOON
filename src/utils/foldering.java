@@ -90,6 +90,7 @@ public class foldering {
                                     if(localStep > baekjoonStepCount || localStep < baekjoonStepCount && localProblemUse.equals("N")) {
                                         Files.move(oldfile, newfile);
                                         localProblem.put("use", "Y");
+                                        localProblem.put("path", newfile.toString());
                                         localProblemList.set(i, localProblem);
                                     } else if(localStep < baekjoonStepCount && localProblemUse.equals("Y")) {
                                         Files.copy(oldfile, newfile);
@@ -101,6 +102,7 @@ public class foldering {
                                     
                                     Files.move(oldfile, newfile);
                                     localProblem.put("use", "Y");
+                                    localProblem.put("path", newfile.toString());
                                     localProblemList.set(i, localProblem);
                                 }
 
@@ -110,6 +112,20 @@ public class foldering {
                     }
                 }
                 baekjoonStepCount++;
+            }
+
+            //정렬하고 남은 파일은 none_step으로 이동
+            for(int i = 0; i < localProblemList.size(); i++) {
+                Map<String,String> localProblem = localProblemList.get(i);
+                String localProblemPath = localProblem.get("path");
+                String localProblemUse = localProblem.get("use");
+
+                if(localProblemUse.equals("N")) {
+                    Path oldfile = Paths.get(localProblemPath);
+                    Path newfile = Paths.get(srcPath + File.separator + "none_step" + File.separator + oldfile.getFileName());
+                    
+                    Files.move(oldfile, newfile);
+                }
             }
 
         } catch (Exception e) {
