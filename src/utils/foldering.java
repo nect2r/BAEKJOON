@@ -145,7 +145,9 @@ public class foldering {
     
             List<Path> result;
             Stream<Path> walk = Files.walk(problemPath);
-            result = walk.filter(Files::isRegularFile).collect(Collectors.toList());
+
+            //로컬 파일 none_step과 step_1만 포함
+            result = walk.filter(Files::isRegularFile).filter(p -> p.getFileName().toString().equals("none_step") || p.getFileName().toString().startsWith("step_")).collect(Collectors.toList());
 
             for(Path path : result) {
                 Map<String,String> map = new HashMap<>();
