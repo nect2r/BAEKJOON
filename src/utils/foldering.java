@@ -10,7 +10,11 @@
  */
 package utils;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -47,6 +51,7 @@ public class foldering {
             String projectPath = file.getAbsoluteFile().toString();
             String srcPath = projectPath.substring(0, projectPath.indexOf(File.separator + "temp")) + File.separator + "src";
             
+
             int baekjoonStepCount = 1;
             for(String[] baekjoonStep : baekjoonProblemList) {
                 for(String baekjoonProblem : baekjoonStep) {
@@ -78,6 +83,12 @@ public class foldering {
 
                                 String currentPath = currentFile.getName().toString();
 
+                                Path localStepDir = Paths.get(srcPath + File.separator + "step_" + baekjoonStepCount);
+
+                                if(!Files.exists(localStepDir)) {
+                                    Files.createDirectory(localStepDir);
+                                }
+
                                 //step_1 처럼 숫자인경우 else none_step 인 경우
                                 if(currentPath.contains("step_")) {
                                     int localStep = Integer.parseInt(currentPath.substring(currentPath.indexOf("_") + 1, currentPath.length()));
@@ -88,19 +99,19 @@ public class foldering {
 
                                     //로컬 스텝이 백준스텝보다 크면 move
                                     if(localStep > baekjoonStepCount || localStep < baekjoonStepCount && localProblemUse.equals("N")) {
-                                        Files.move(oldfile, newfile);
+                                        moveFile(oldfile, newfile);
                                         localProblem.put("use", "Y");
                                         localProblem.put("path", newfile.toString());
                                         localProblemList.set(i, localProblem);
                                     } else if(localStep < baekjoonStepCount && localProblemUse.equals("Y")) {
-                                        Files.copy(oldfile, newfile);
+                                        copyFile(oldfile, newfile);
                                     } 
                                 } else {
                                     //none_step 이므로 move
                                     Path oldfile = Paths.get(localProblemPath);
                                     Path newfile = problemFile.toPath();
                                     
-                                    Files.move(oldfile, newfile);
+                                    moveFile(oldfile, newfile);
                                     localProblem.put("use", "Y");
                                     localProblem.put("path", newfile.toString());
                                     localProblemList.set(i, localProblem);
@@ -124,13 +135,67 @@ public class foldering {
                     Path oldfile = Paths.get(localProblemPath);
                     Path newfile = Paths.get(srcPath + File.separator + "none_step" + File.separator + oldfile.getFileName());
                     
-                    Files.move(oldfile, newfile);
+                    moveFile(oldfile, newfile);
                 }
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void copyFile(Path oldfile, Path newfile) throws Exception{
+        Files.copy(oldfile, newfile);
+
+        List<String> allLines = Files.readAllLines(newfile);
+
+        String pakage = newfile.getParent().toFile().getName().toString();
+
+        for(int i = 0; i < allLines.size(); i++) {
+            String line = allLines.get(i);
+            if(line.contains("package ")) {
+                allLines.set(i, pakage);
+                break;
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        for(String str : allLines) {
+            sb.append(str);
+        }
+
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(newfile.toFile()), StandardCharsets.UTF_8));
+        bw.write(sb.toString());
+        bw.flush();
+        bw.close();
+    }
+
+    public static void moveFile(Path oldfile, Path newfile) throws Exception{
+        Files.move(oldfile, newfile);
+
+        List<String> allLines = Files.readAllLines(newfile);
+
+        String pakage = newfile.getParent().toFile().getName().toString();
+
+        for(int i = 0; i < allLines.size(); i++) {
+            String line = allLines.get(i);
+            if(line.contains("package ")) {
+                allLines.set(i, pakage);
+                break;
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        for(String str : allLines) {
+            sb.append(str);
+        }
+
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(newfile.toFile()), StandardCharsets.UTF_8));
+        bw.write(sb.toString());
+        bw.flush();
+        bw.close();
     }
 
     public static List<Map<String,String>> getLocalProblemList() {
@@ -146,16 +211,17 @@ public class foldering {
             List<Path> result;
             Stream<Path> walk = Files.walk(problemPath);
 
-            //로컬 파일 none_step과 step_1만 포함
-            result = walk.filter(Files::isRegularFile).filter(p -> p.getFileName().toString().equals("none_step") || p.getFileName().toString().startsWith("step_")).collect(Collectors.toList());
-
+            result = walk.filter(Files::isRegularFile).collect(Collectors.toList());
             for(Path path : result) {
-                Map<String,String> map = new HashMap<>();
+                //로컬 파일 none_step과 step_1만 포함
+                if(path.toString().contains("none_step") || path.toString().contains("step_")) {
+                    Map<String,String> map = new HashMap<>();
 
-                map.put("path", path.toString());
-                map.put("use", "N");
-
-                problemList.add(map);
+                    map.put("path", path.toString());
+                    map.put("use", "N");
+    
+                    problemList.add(map);
+                }
             }
 
             walk.close();
@@ -165,78 +231,6 @@ public class foldering {
 
         return problemList;
     }
-    
-    /* 
-    public static void none(List<String> hrefList) {
-        List<String> problemList = new ArrayList<>();
-
-        File file = new File("temp");
-        String projectPath = file.getAbsoluteFile().toString();
-        String srcPath = projectPath.substring(0, projectPath.indexOf(File.separator + "temp")) + File.separator + "src";
-
-        try {
-            Path problemPath = Paths.get(srcPath);
-    
-            List<Path> result;
-            Stream<Path> walk = Files.walk(problemPath);
-            result = walk.filter(Files::isRegularFile).collect(Collectors.toList());
-    
-            for(Path path : result) {
-                problemList.add(path.toString());
-            }
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-
-        List<Integer[]> problemListJava = new ArrayList<>();
-
-
-        for(int i = 0; i < hrefList.size(); i++) {
-            String href = hrefList.get(i);
-            //Path stepPath = Paths.get(srcPath + File.separator + "step_" + (i + 1));
-            //File stepFolder = new File(stepPath.toString());
-
-            try {
-                Document doc = Jsoup.connect(problemUrl + href).get();
-
-                Elements tr = doc.select(problemTableSelector);
-
-                for(Element element : tr) {
-                    String problem = element.text() + ".java";
-                    int step = i + 1;
-                    for(String javaPath : problemList) {
-                        if(javaPath.contains("problem_" + problem + ".java")) {
-                            if(!javaPath.contains("step_" + (i + 1) + File.separator + "problem_" + problem + ".java")) {
-                                if(!stepFolder.isDirectory()) {
-                                    stepFolder.mkdir();
-                                }
-                                    
-                                Path oldfile = Paths.get(javaPath);
-                                Path newfile = Paths.get(stepPath.toString() + File.separator + "problem_" + problem + ".java");
-                                File newF = new File(newfile.toString());
-
-                                int count = 1;
-
-                                //move 전 중복확인
-                                while(newF.exists()) {
-                                    newfile = Paths.get(stepPath.toString() + File.separator + "problem_" + problem + "_" + count + ".java");
-                                    newF = new File(newfile.toString());
-                                    count++;
-                                }
-                                
-                                Files.move(oldfile, newfile);
-                            }
-                        }
-                    }
-                }
-            } catch(Exception e) {
-                e.printStackTrace();
-                break;
-            }
-        }
-    }
-
-    */
 
     //단계확인경로
     static final String STEP_URL = "https://www.acmicpc.net/step";
