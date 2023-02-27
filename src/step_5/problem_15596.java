@@ -11,7 +11,7 @@ package step_5;
 
 public class problem_15596 {
 	public static void main(String[] args) {
-		boolean[] check = new boolean[10001];	// 1ºÎÅÍ 10000ÀÌ¹Ç·Î
+		boolean[] check = new boolean[10001];	// 1ë¶€í„° 10000ì´ë¯€ë¡œ
 		
 		for(int i=1; i<10001; i++) {
 			int n = d(i);
@@ -24,7 +24,7 @@ public class problem_15596 {
 		StringBuilder sb = new StringBuilder();
         
 		for (int i = 1; i < 10001; i++) {
-			if (!check[i]) {	// false ÀÎ ÀÎµ¦½º¸¸ Ãâ·Â
+			if (!check[i]) {	// false ì¸ ì¸ë±ìŠ¤ë§Œ ì¶œë ¥
 				sb.append(i).append('\n');
 			}
 		}
@@ -35,8 +35,8 @@ public class problem_15596 {
 		int sum = number;
 		
 		while(number != 0){
-			sum = sum + (number % 10); // Ã¹ Â° ÀÚ¸®¼ö
-			number = number/10;	// 10À» ³ª´©¾î Ã¹ Â° ÀÚ¸®¸¦ ¾ø¾Ø´Ù
+			sum = sum + (number % 10); // ì²« ì§¸ ìë¦¬ìˆ˜
+			number = number/10;	// 10ì„ ë‚˜ëˆ„ì–´ ì²« ì§¸ ìë¦¬ë¥¼ ì—†ì•¤ë‹¤
 		}
 		
 		return sum;

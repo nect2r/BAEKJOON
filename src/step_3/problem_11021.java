@@ -23,7 +23,7 @@ public class problem_11021 {
         	if((0 < A && A < 10) && (0 < B && B < 10)) {
         		System.out.println("Case #" + i + ": " + (A + B));
         	}else {
-        		System.out.println("0º¸´Ù Ä¿¾ßÇÏ¸ç 10º¸´Ù ÀÛ¾Æ¾ßÇÕ´Ï´Ù.");
+        		System.out.println("0ë³´ë‹¤ ì»¤ì•¼í•˜ë©° 10ë³´ë‹¤ ìž‘ì•„ì•¼í•©ë‹ˆë‹¤.");
         	}
         }
         

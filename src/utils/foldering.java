@@ -144,12 +144,14 @@ public class foldering {
         }
     }
 
+    static String line = System.getProperty("line.separator");
+
     public static void copyFile(Path oldfile, Path newfile) throws Exception{
         Files.copy(oldfile, newfile);
 
-        List<String> allLines = Files.readAllLines(newfile);
+        List<String> allLines = Files.readAllLines(newfile, StandardCharsets.UTF_8);
 
-        String pakage = newfile.getParent().toFile().getName().toString();
+        String pakage = "package " + newfile.getParent().toFile().getName().toString() + ";";
 
         for(int i = 0; i < allLines.size(); i++) {
             String line = allLines.get(i);
@@ -162,10 +164,10 @@ public class foldering {
         StringBuilder sb = new StringBuilder();
 
         for(String str : allLines) {
-            sb.append(str);
+            sb.append(str + line);
         }
 
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(newfile.toFile()), StandardCharsets.UTF_8));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(newfile.toFile().getPath()), StandardCharsets.UTF_8));
         bw.write(sb.toString());
         bw.flush();
         bw.close();
@@ -174,9 +176,9 @@ public class foldering {
     public static void moveFile(Path oldfile, Path newfile) throws Exception{
         Files.move(oldfile, newfile);
 
-        List<String> allLines = Files.readAllLines(newfile);
+        List<String> allLines = Files.readAllLines(newfile, StandardCharsets.UTF_8);
 
-        String pakage = newfile.getParent().toFile().getName().toString();
+        String pakage = "package " + newfile.getParent().toFile().getName().toString() + ";";
 
         for(int i = 0; i < allLines.size(); i++) {
             String line = allLines.get(i);
@@ -189,10 +191,10 @@ public class foldering {
         StringBuilder sb = new StringBuilder();
 
         for(String str : allLines) {
-            sb.append(str);
+            sb.append(str + line);
         }
 
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(newfile.toFile()), StandardCharsets.UTF_8));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(newfile.toFile().getPath()), StandardCharsets.UTF_8));
         bw.write(sb.toString());
         bw.flush();
         bw.close();

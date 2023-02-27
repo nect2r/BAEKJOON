@@ -18,7 +18,7 @@ import java.io.OutputStreamWriter;
 public class problem_15552 {
     public static void main(String[] args) throws IOException{
     	BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-    	BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));//¼±¾ð
+    	BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));//ì„ ì–¸
     	
     	try {
     		
@@ -37,7 +37,7 @@ public class problem_15552 {
     				}
     			}
     		}else {
-    			System.out.println("T´Â ÃÖ´ë 1,000,000 ÀÔ´Ï´Ù.");
+    			System.out.println("TëŠ” ìµœëŒ€ 1,000,000 ìž…ë‹ˆë‹¤.");
     		}
 		} catch (Exception e) {
 			e.printStackTrace();

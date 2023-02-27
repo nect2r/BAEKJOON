@@ -15,17 +15,17 @@ public class problem_4344 {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		
-		//Å×½ºÆ® ÄÉÀÌ½º N°³
+		//í…ŒìŠ¤íŠ¸ ì¼€ì´ìŠ¤ Nê°œ
 		int N = in.nextInt();
 		
 		for(int i=0; i<N; i++) {
-			//ÀÎ¿ø¼ö 
+			//ì¸ì›ìˆ˜ 
 			int people = in.nextInt();
 			
-			//Á¡¼ö ¹è¿­
+			//ì ìˆ˜ ë°°ì—´
 			int[] point = new int[people];
 			
-			//ÃÑÁ¡¼ö
+			//ì´ì ìˆ˜
 			int sum = 0;
 			double count = 0;
 			

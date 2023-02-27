@@ -20,22 +20,22 @@ public class problem_1065 {
 	}
 	
 	public static int arithmetic_sequence(int num){
-		int cnt = 0;	// ÇÑ¼ö Ä«¿îÆÃ
+		int cnt = 0;	// í•œìˆ˜ ì¹´ìš´íŒ…
 		
 		if(num < 100) {
 			return num;
 		} else {
 			cnt = 99; 
-			if(num == 1000){	// ¿¹¿ÜÃ³¸® ÇÊ¼ö
+			if(num == 1000){	// ì˜ˆì™¸ì²˜ë¦¬ í•„ìˆ˜
 				num = 999;
 			}
 			
 			for(int i = 100; i <= num; i++){
-				int hun = i / 100;	// ¹éÀÇ ÀÚ¸´¼ö
-				int ten = (i / 10) % 10;	// ½ÊÀÇ ÀÚ¸´¼ö
+				int hun = i / 100;	// ë°±ì˜ ìžë¦¿ìˆ˜
+				int ten = (i / 10) % 10;	// ì‹­ì˜ ìžë¦¿ìˆ˜
 				int one = i % 10;
 	            
-				if((hun - ten) == (ten - one)){	// °¢ ÀÚ¸´¼ö°¡ ¼ö¿­À» ÀÌ·ç¸é
+				if((hun - ten) == (ten - one)){	// ê° ìžë¦¿ìˆ˜ê°€ ìˆ˜ì—´ì„ ì´ë£¨ë©´
 					cnt++;
 				}
 			}

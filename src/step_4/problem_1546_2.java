@@ -13,21 +13,21 @@ import java.util.Scanner;
 
 public class problem_1546_2 {
 	public static void main(String[] args) {
-		// 1Â÷½Ãµµ´Â for¹®ÀÌ µÎ¹øµ¹¾Æ¼­ 2Â÷½Ãµµ
+		// 1ì°¨ì‹œë„ëŠ” forë¬¸ì´ ë‘ë²ˆëŒì•„ì„œ 2ì°¨ì‹œë„
 		Scanner in = new Scanner(System.in);
 		
-		//Ã¹¹ø¤Š inputÀº °ú¸ñÀÇ °¹¼ö N°³
+		//ì²«ë²ˆÂŠ inputì€ ê³¼ëª©ì˜ ê°¯ìˆ˜ Nê°œ
 		int N = in.nextInt();
 		
-		//µÎ¹ø¤Š inputÀº °ú¸ñ ¼ºÀû N°³ ¸¸Å­
+		//ë‘ë²ˆÂŠ inputì€ ê³¼ëª© ì„±ì  Nê°œ ë§Œí¼
 		double[] M = new double[N];
 		
-		//ÃÖ°íÁ¡¼ö H
+		//ìµœê³ ì ìˆ˜ H
 		double H = 0;
-		//ÃÑÁ¡¼ö SUM
+		//ì´ì ìˆ˜ SUM
 		double sum = 0;
 
-		//°ú¸ñÀÇ Á¡¼ö¸¦ ÀúÀåÇÏ¸é¼­ ÃÖ°íÁ¡¼öµµ °»½ÅÇÔ
+		//ê³¼ëª©ì˜ ì ìˆ˜ë¥¼ ì €ì¥í•˜ë©´ì„œ ìµœê³ ì ìˆ˜ë„ ê°±ì‹ í•¨
 		for(int i=0; i<N; i++) {
 			M[i] = in.nextInt();
 			
@@ -37,7 +37,7 @@ public class problem_1546_2 {
 			sum += M[i];
 		}
 		
-		//°á°ú
+		//ê²°ê³¼
 		System.out.println(((sum/H)*100)/M.length);
 		in.close();
 	}

@@ -15,30 +15,30 @@ public class problem_8958 {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		
-		//Ã¹¹ø¤Š input Å×½ºÆ® ÄÉÀÌ½º N°³
+		//ì²«ë²ˆì¨° input í…ŒìŠ¤íŠ¸ ì¼€ì´ìŠ¤ Nê°œ
 		int N = in.nextInt();
 		
-		//OX¸¦ ´ã´Â ¹è¿­
+		//OXë¥¼ ë‹´ëŠ” ë°°ì—´
 		String[] ox = new String[N];
-		//Á¡¼ö¸¦ ´ã´Â ¹è¿­
+		//ì ìˆ˜ë¥¼ ë‹´ëŠ” ë°°ì—´
 		int[] point = new int[N];
 		
 		for(int i=0; i<N; i++) {
 			ox[i] = in.next();
 		}
 		
-		//Á¡¼ö
+		//ì ìˆ˜
 		int sum;
-		//¿¬°èÁ¡¼ö
+		//ì—°ê³„ì ìˆ˜
 		int and;
 		
-		//Å×½ºÆ® ÄÉÀÌ½º¸¸Å­ µ¼
+		//í…ŒìŠ¤íŠ¸ ì¼€ì´ìŠ¤ë§Œí¼ ë”
 		for(int i=0; i<N; i++) {
 			sum = 0;
 			and = 1;
 			String str = ox[i];
-			//String À» char·Î º¯È¯ÇÏ°í OÀÎ°æ¿ì¿¡´Â Á¡¼ö¸¦ ´õÇÏ°í +1À»ÇÏ¿©¼­ ¿¬°èÁ¡¼ö¸¦ ´Ã¸²
-			//Æ²¸°°æ¿ì¿¡´Â ¿¬°èÁ¡¼ö¸¦ 1·Î ÃÊ±âÈ­
+			//String ì„ charë¡œ ë³€í™˜í•˜ê³  Oì¸ê²½ìš°ì—ëŠ” ì ìˆ˜ë¥¼ ë”í•˜ê³  +1ì„í•˜ì—¬ì„œ ì—°ê³„ì ìˆ˜ë¥¼ ëŠ˜ë¦¼
+			//í‹€ë¦°ê²½ìš°ì—ëŠ” ì—°ê³„ì ìˆ˜ë¥¼ 1ë¡œ ì´ˆê¸°í™”
 			for(int j=0; j<str.length(); j++) {
 				if(str.charAt(j) == 'O') {
 					sum += and;
@@ -50,7 +50,7 @@ public class problem_8958 {
 			point[i] = sum;
 		}
 
-		//Á¡¼ö È®ÀÎ
+		//ì ìˆ˜ í™•ì¸
 		for(int p : point) {
 			System.out.println(p);
 		}

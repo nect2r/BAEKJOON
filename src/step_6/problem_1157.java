@@ -15,16 +15,16 @@ public class problem_1157 {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
  
-		int[] arr = new int[26]; // ¿µ¹®ÀÚÀÇ °³¼ö´Â 26°³ÀÓ ¿À´ÃÀº ºÁÁÖ..¤Ğ
+		int[] arr = new int[26]; // ì˜ë¬¸ìì˜ ê°œìˆ˜ëŠ” 26ê°œì„ ì˜¤ëŠ˜ì€ ë´ì£¼..ã… 
 		String s = in.next();
  
 		for (int i = 0; i < s.length(); i++){
  
-			if ('A' <= s.charAt(i) && s.charAt(i) <= 'Z') { // ´ë¹®ÀÚ ¹üÀ§
-				arr[s.charAt(i) - 'A']++;	// ÇØ´ç ÀÎµ¦½ºÀÇ °ª 1 Áõ°¡
+			if ('A' <= s.charAt(i) && s.charAt(i) <= 'Z') { // ëŒ€ë¬¸ì ë²”ìœ„
+				arr[s.charAt(i) - 'A']++;	// í•´ë‹¹ ì¸ë±ìŠ¤ì˜ ê°’ 1 ì¦ê°€
 			}
     
-			else {	// ¼Ò¹®ÀÚ ¹üÀ§
+			else {	// ì†Œë¬¸ì ë²”ìœ„
 				arr[s.charAt(i) - 'a']++;
 			}
 		}
@@ -36,7 +36,7 @@ public class problem_1157 {
 		for (int i = 0; i < 26; i++) {
 			if (arr[i] > max) {
 				max = arr[i];
-				ch = (char) (i + 65); // ´ë¹®ÀÚ·Î Ãâ·ÂÇØ¾ßÇÏ¹Ç·Î 65¸¦ ´õÇØÁØ´Ù.
+				ch = (char) (i + 65); // ëŒ€ë¬¸ìë¡œ ì¶œë ¥í•´ì•¼í•˜ë¯€ë¡œ 65ë¥¼ ë”í•´ì¤€ë‹¤.
 			}
 			else if (arr[i] == max) {
 				ch = '?';
