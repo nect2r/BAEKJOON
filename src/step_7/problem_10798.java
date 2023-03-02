@@ -31,7 +31,7 @@ public class problem_10798 {
 		for(char[] cs : result) {
 			for(char c : cs) {
 				//공백제거
-				if(c != ' ') {
+				if(c != 0) {
 					sb.append(c);
 				}
 			}
