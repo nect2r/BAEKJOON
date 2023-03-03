@@ -14,6 +14,20 @@ import java.util.*;
 
 public class problem_2447 {
 
+    /* 
+
+        *********
+        * ** ** *
+        *********
+        ***   ***
+        * *   * *
+        ***   ***
+        *********
+        * ** ** *
+        *********
+
+    */
+
     static char[][] arr;
 
     public static void main(String[] args) throws IOException{
@@ -21,14 +35,24 @@ public class problem_2447 {
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         int N = Integer.parseInt(st.nextToken());
-
         arr = new char[N][N];
-        print(0, 0, N, false);
+
+        make(0, 0, N, false);
+
+        for(char[] c : arr) {
+            for(char cs : c) {
+                System.out.print(cs);
+            }
+            System.out.println();
+        }
     }
 
-    public static void print(int x, int y, int N, boolean chk) {
-        if(N == 1) return;
+    public static void make(int x, int y, int N, boolean isBlack) {
 
+        //공백여부
+        if(isBlack) {
+            
+        }
 
     }
 }
