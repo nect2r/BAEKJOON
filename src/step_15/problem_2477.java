@@ -9,58 +9,43 @@
  */
 package step_15;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class problem_2477 {
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = null;
-
-        //int count = Integer.parseInt(br.readLine());
-        Integer.parseInt(br.readLine());
-        
-        int[] ver = new int[3];
-        int[] hor = new int[3];
-        int vc = 0;
-        int hc = 0;
-        int verMax = 0;
-        int horMax = 0;
-        int verMaxPoint = 0;
-        int horMaxPoint = 0;
-
-        //방향이 같은 2개가 나올떄 세로는 2번째, 가로는 1번째를 곱하면 제외할 영역을 알수있음
-        //전체에서 빼고 구하면 되겠다.. 야호
-        for(int i = 0; i < 6; i++) {
-            st = new StringTokenizer(br.readLine());
-
-            int direction = Integer.parseInt(st.nextToken());
-            int length = Integer.parseInt(st.nextToken());
-
-            //세로
-            if(direction == 3 || direction == 4) {
-                ver[vc] = length;
-
-                if(verMax < length) {
-                    verMax = length;
-                    verMaxPoint = vc;
-                }
-
-                vc++;
-            //가로
-            } else {
-                hor[hc] = length;
-                
-                if(horMax < length) {
-                    horMax = length;
-                    horMaxPoint = hc;
-                }
-
-                hc++;
-            }
-        }
-
-        System.out.println(verMaxPoint);
-        System.out.println(horMaxPoint);
+		StringTokenizer st = new StringTokenizer(br.readLine());
+ 
+		int K = Integer.parseInt(st.nextToken());
+ 
+		int hMax = 0, wMax = 0; 
+		int hMaxIdx = -1, wMaxIdx = -1;
+ 
+		int[] dirs = new int[6]; 
+		int[] dist = new int[6];
+ 
+		for (int i = 0; i < 6; i++) {
+			st = new StringTokenizer(br.readLine());
+			dirs[i] = Integer.parseInt(st.nextToken());
+			dist[i] = Integer.parseInt(st.nextToken());
+			if (dirs[i] == 1 || dirs[i] == 2) { 
+				if (hMax < dist[i]) {
+ 					hMax = dist[i];
+					hMaxIdx = i;
+				}
+			} else {
+				if (wMax < dist[i]) {
+					wMax = dist[i];
+					wMaxIdx = i;
+				}
+			}
+		}
+		int maxSquare = wMax * hMax; 
+		int minSquare = dist[(wMaxIdx + 3) % 6] * dist[(hMaxIdx + 3) % 6]; 
+ 
+		System.out.println((maxSquare-minSquare)*K);
     }
 }
