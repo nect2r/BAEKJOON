@@ -17,7 +17,7 @@ public class problem_10828 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
     
-        Stack stack = new Stack();
+        Stackk stack = new Stackk();
 
         // 명령의 수
         int n = Integer.parseInt(st.nextToken());
@@ -55,7 +55,7 @@ public class problem_10828 {
     }
 }
 
-class Stack {
+class Stackk {
     List<Integer> stack = new ArrayList<>();
 
     public void push(int data) {
