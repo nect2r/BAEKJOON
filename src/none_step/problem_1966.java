@@ -39,7 +39,7 @@ public class problem_1966 {
 
             //인쇄순서를 알고싶은 문서의 인덱스번호
             int index = Integer.parseInt(st.nextToken());
-            
+
             //알고싶은 문서의 배열에 1로 변경
             arr[index][1] = 1;
 
@@ -50,20 +50,36 @@ public class problem_1966 {
                 arr[j][0] = data;
             }
 
+            int point = 0;
+
             //배열정렬
-            for (int j = 0; j < size; j++) {
-                for (int k = size - 1; k > j; k--) {
-                    if(arr[j][0] < arr[k][0]) {
-                        int[] tmp = arr[j];
-                        arr[j] = arr[k];
-                        arr[k] = tmp;
-                        break;
+            while (point != size - 1) {
+                boolean check = false;
+
+                for (int k = point + 1; k < size; k++) {
+                    if (arr[point][0] < arr[k][0]) {
+                        check = true;
                     }
+                }
+
+                if (check) {
+                    int[] temp = arr[point];
+                    for (int z = point + 1; z < size; z++) {
+                        arr[z - 1] = arr[z];
+
+                        if (size - 1 == z) {
+                            arr[size - 1] = temp;
+                        }
+                    }
+                } else {
+                    point++;
                 }
             }
 
-            for (int j = 0; j < size; j++) {
-                System.out.println(arr[j][0] + " : " + arr[j][1]);
+            for (int s = 0; s < arr.length; s++) {
+                if (arr[s][1] == 1) {
+                    System.out.println(s + 1);
+                }
             }
         }
     }
