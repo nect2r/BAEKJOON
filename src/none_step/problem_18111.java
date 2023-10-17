@@ -31,6 +31,7 @@ public class problem_18111 {
             for (int j = 0; j < M; j++) {
                 arr[i][j] = Integer.parseInt(st.nextToken());
                 sum += arr[i][j];
+
             }
         }
 
