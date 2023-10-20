@@ -1,5 +1,5 @@
 /*
- * @since 2021-10-17
+ * @since 2023-10-20
  * User https://www.acmicpc.net/user/nect2r
  * Blog https://nect2r.tistory.com/
  * Github https://github.com/nect2r/BAEKJOON
@@ -23,24 +23,14 @@ public class problem_15829 {
 
         String str = br.readLine();
         long sum = 0;
+        long pow = 1;
 
         for(int i = 0; i < L; i ++) {
-            int a = str.charAt(i) - 96;
-
-            sum = sum + makePow(a, i);
+            sum += (str.charAt(i) - 96) * pow;
+            pow = (pow * 31) % 1234567891;
         }
 
-        System.out.println(sum);
-    }
-
-    static final int M = 1234567891;
-    //제곱의 범위가 long을 벗어남으로 pow함수 생성
-    public static long makePow(int a, int y) {
-        long result = a % M;
-
-
-
-        return 0 ;
+        System.out.println(sum % 1234567891);
     }
 
 }
