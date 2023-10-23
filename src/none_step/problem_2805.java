@@ -22,7 +22,7 @@ public class problem_2805 {
 
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
-        int MAX_VALUE = Integer.MIN_VALUE;
+        long MAX_VALUE = Integer.MIN_VALUE;
 
         int[] trees = new int[N];
         st = new StringTokenizer(br.readLine());
@@ -35,23 +35,18 @@ public class problem_2805 {
             }
         }
 
-        int start = 1;
-        int end = MAX_VALUE;
+        long start = 1;
+        long end = MAX_VALUE;
 
         while(start <= end) {
-            int mid = (start + end) / 2;
-            int sum = 0;
-
-            System.out.println(start + ", " + mid + ", " + end);
+            long mid = (start + end) / 2;
+            long sum = 0;
 
             for (int i = 0; i < trees.length; i++) {
                 if (trees[i] >= mid) {
                     sum += trees[i] - mid;
                 }
             }
-
-            System.out.println(sum);
-            System.out.println(M);
 
             if (sum >= M) {
                 start = mid + 1;
